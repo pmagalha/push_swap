@@ -1,28 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_lists.c                                      :+:      :+:    :+:   */
+/*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmagalha <pmagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/28 11:10:22 by pmagalha          #+#    #+#             */
-/*   Updated: 2023/08/30 12:15:06 by pmagalha         ###   ########.fr       */
+/*   Created: 2023/09/06 10:09:49 by pmagalha          #+#    #+#             */
+/*   Updated: 2023/09/06 10:29:35 by pmagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_lists(t_stack_node *head)
+void	assign_index(t_stack_node *sorted_stack)
 {
+	int				index;
 	t_stack_node	*current;
-	int				i;
 
-	i = 0;
-	current = head;
+	index = 0;
+	current = sorted_stack;
 	while (current != NULL)
 	{
-		printf("Node %d (Index %d): %d\n", i, current->index, current->value);
-		i++;
+		current->index = index;
+		index++;
 		current = current->next;
 	}
+}
+
+int	find_index(int n, t_stack_node *sorted)
+{
+	int	res;
+
+	res = 0;
+	while (sorted)
+	{
+		if (n == sorted->value)
+			break ;
+		sorted = sorted->next;
+		res++;
+	}
+	return (res);
 }

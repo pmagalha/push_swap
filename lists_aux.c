@@ -6,7 +6,7 @@
 /*   By: pmagalha <pmagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 11:56:55 by pmagalha          #+#    #+#             */
-/*   Updated: 2023/09/05 10:38:32 by pmagalha         ###   ########.fr       */
+/*   Updated: 2023/09/06 10:36:00 by pmagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,34 +61,36 @@ t_stack_node	*delete_head_node(t_stack_node *head)
 	return (0);
 }
 
-t_stack_node    *delete_tail_node(t_stack_node  *head)
+t_stack_node	*delete_tail_node(t_stack_node *head)
 {
-    t_stack_node  *current;
-    
-    if (head == NULL)
-        return (NULL);
-    else if (head->next == NULL)
-    {    
-        free (head);
-        return (NULL);   
-    }
-    else
-    {
-        current = head;
-        t_stack_node  *prev = NULL;
-        while (current->next != NULL)
-        {
-            prev = current;
-            current = current->next;
-        }
-    prev->next = NULL;
-    return (head);
-    }
+	t_stack_node	*current;
+	t_stack_node	*prev;
+
+	if (head == NULL)
+		return (NULL);
+	else if (head->next == NULL)
+	{
+		free (head);
+		return (NULL);
+	}
+	else
+	{
+		current = head;
+		prev = NULL;
+		while (current->next != NULL)
+		{
+			prev = current;
+			current = current->next;
+		}
+		prev->next = NULL;
+		return (head);
+	}
 }
 
 int	list_lenght_iter(t_stack_node *head)
 {
 	int	i;
+
 	i = 0;
 	while (head != NULL)
 	{

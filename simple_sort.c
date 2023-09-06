@@ -6,7 +6,7 @@
 /*   By: pmagalha <pmagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 20:16:20 by pmagalha          #+#    #+#             */
-/*   Updated: 2023/09/05 20:16:30 by pmagalha         ###   ########.fr       */
+/*   Updated: 2023/09/06 11:13:01 by pmagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,18 @@
 
 t_stack_node	*find_min(t_stack_node **a)
 {
-	if (*a == NULL)
-		return (NULL);
-		
 	t_stack_node	*min;
 	t_stack_node	*current;
-	
+
+	if (*a == NULL)
+		return (NULL);
 	min = *a;
 	current = (*a)->next;
-	
 	while (current != NULL)
 	{
 		if (current->value < min->value)
-		min = current;
-	current = current->next;
+			min = current;
+		current = current->next;
 	}
 	return (min);
 }
@@ -35,7 +33,7 @@ t_stack_node	*find_min(t_stack_node **a)
 void	sort3(t_stack_node **dup_pos)
 {
 	t_stack_node	*node;
-	
+
 	node = *dup_pos;
 	if (node->next->next->value > node->next->value)
 	{
@@ -45,10 +43,10 @@ void	sort3(t_stack_node **dup_pos)
 			*dup_pos = rotate_a(*dup_pos);
 	}
 	else
-	{ 
+	{
 		if (node->next->next->value < node->value)
 		{
-			if(node->value > node->next->value)
+			if (node->value > node->next->value)
 				*dup_pos = swap_a(*dup_pos);
 			*dup_pos = rev_rot_a(*dup_pos);
 		}
@@ -62,8 +60,8 @@ void	sort3(t_stack_node **dup_pos)
 
 int	get_distance(t_stack_node **a, t_stack_node *min)
 {
+	int				distance;
 	t_stack_node	*head;
-	int		distance;
 
 	distance = 0;
 	head = *a;

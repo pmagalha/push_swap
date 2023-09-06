@@ -6,7 +6,7 @@
 /*   By: pmagalha <pmagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 17:48:30 by pmagalha          #+#    #+#             */
-/*   Updated: 2023/08/29 12:33:52 by pmagalha         ###   ########.fr       */
+/*   Updated: 2023/09/05 19:23:14 by pmagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@
 		current = current->next;
 	}
 }*/
+
+//alterado o push para if (*b != NULL) em vez de if (b != NULL)
 void	push_a(t_stack_node **a, t_stack_node **b)
 {
 	t_stack_node *top_b;
 	
-	if (b != NULL)
+	if (*b != NULL)
 	{
 	top_b = *b;
 	*b = (*b)->next;
@@ -45,7 +47,7 @@ void	push_b(t_stack_node **a, t_stack_node **b)
 {
 	t_stack_node *top_a;
 
-	if (a != NULL)
+	if (*a != NULL)
 	{
 		top_a = *a;
 		*a = (*a)->next;

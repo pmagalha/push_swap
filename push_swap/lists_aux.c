@@ -6,7 +6,7 @@
 /*   By: pmagalha <pmagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 11:56:55 by pmagalha          #+#    #+#             */
-/*   Updated: 2023/08/29 12:39:59 by pmagalha         ###   ########.fr       */
+/*   Updated: 2023/09/05 10:38:32 by pmagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,16 @@ t_stack_node    *delete_tail_node(t_stack_node  *head)
     prev->next = NULL;
     return (head);
     }
+}
+
+int	list_lenght_iter(t_stack_node *head)
+{
+	int	i;
+	i = 0;
+	while (head != NULL)
+	{
+		i++;
+		head = head->next;
+	}
+	return (i);
 }

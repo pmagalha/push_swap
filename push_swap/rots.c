@@ -6,7 +6,7 @@
 /*   By: pmagalha <pmagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 14:12:12 by pmagalha          #+#    #+#             */
-/*   Updated: 2023/08/29 12:31:19 by pmagalha         ###   ########.fr       */
+/*   Updated: 2023/08/31 15:49:37 by pmagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,12 @@
 	}
 }*/
 
-void	rotate_a(t_stack_node *a)
+t_stack_node	*rotate_a(t_stack_node *a)
 {
 	int				value;
 	t_stack_node	*first;
 	
+	first = NULL;
 	value = a->value;
 	if (a != NULL || a->next != NULL)
 	{
@@ -41,6 +42,7 @@ void	rotate_a(t_stack_node *a)
 	first = delete_head_node(a);
 	}
 	ft_printf("ra\n");
+	return (first);
 }
 
 void	rotate_b(t_stack_node *b)

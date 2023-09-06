@@ -6,7 +6,7 @@
 /*   By: pmagalha <pmagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 16:19:25 by pmagalha          #+#    #+#             */
-/*   Updated: 2023/08/29 09:51:48 by pmagalha         ###   ########.fr       */
+/*   Updated: 2023/08/31 15:51:54 by pmagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ t_stack_node    *rev_rot_a(t_stack_node *a)
     t_stack_node    *new_head;
     new_head = delete_tail_node(a);
     new_head = insert_at_head(a, last_value);
+    ft_printf("rra\n");
     return (new_head);
 }
 
@@ -104,16 +105,17 @@ t_stack_node    *rev_rot_b(t_stack_node *b)
     t_stack_node    *new_head;
     new_head = delete_tail_node(b);
     new_head = insert_at_head(b, last_value);
+    ft_printf("rrb\n");
     return (new_head);
 }
 
-void	rev_rot_rr(t_stack_node *head_a, t_stack_node *head_b)
+/*void	rev_rot_rr(t_stack_node *head_a, t_stack_node *head_b)
 {
-	rev_rot_a(head_a);
+	rev_rotate(head_a);
 	rev_rot_b(head_b);
 }
 
-/*int main (void)
+int main (void)
 {
 	t_stack_node	value1;
 	t_stack_node	value2;

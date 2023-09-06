@@ -6,7 +6,7 @@
 /*   By: pmagalha <pmagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 10:37:16 by pmagalha          #+#    #+#             */
-/*   Updated: 2023/08/29 09:53:02 by pmagalha         ###   ########.fr       */
+/*   Updated: 2023/08/31 10:26:59 by pmagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ t_stack_node	*swap_a(t_stack_node *a)
 	temp = first->value;
 	first->value = second->value;
 	second->value = temp;
+	ft_printf("sa\n");
 	return (a);
 }
 
@@ -59,6 +60,7 @@ t_stack_node	*swap_b(t_stack_node *b)
 	temp = first->value;
 	first->value = second->value;
 	second->value = temp;
+	ft_printf("sb\n");
 	return (b);
 }
 

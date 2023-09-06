@@ -6,7 +6,7 @@
 /*   By: pmagalha <pmagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 11:10:22 by pmagalha          #+#    #+#             */
-/*   Updated: 2023/08/28 16:09:29 by pmagalha         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:15:06 by pmagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_lists(t_stack_node *head)
 	current = head;
 	while (current != NULL)
 	{
-		printf("Node %d: %d\n", i, current->value);
+		printf("Node %d (Index %d): %d\n", i, current->index, current->value);
 		i++;
 		current = current->next;
 	}

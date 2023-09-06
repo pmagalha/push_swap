@@ -6,7 +6,7 @@
 /*   By: pmagalha <pmagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 10:45:09 by pmagalha          #+#    #+#             */
-/*   Updated: 2023/09/06 11:11:40 by pmagalha         ###   ########.fr       */
+/*   Updated: 2023/09/06 17:07:27 by pmagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,11 @@ int	check_args(int argc, char **argv)
 	valid = check_array(args, i);
 	if (!args[0])
 	{
-		free(args);
+		free_array(args);
 		return (1);
 	}
 	if (argc == 2)
-		free(args);
+		free_array(args);
 	if (valid)
 		return (1);
 	return (0);

@@ -6,7 +6,7 @@
 #    By: pmagalha <pmagalha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 11:38:42 by pmagalha          #+#    #+#              #
-#    Updated: 2023/09/06 10:47:58 by pmagalha         ###   ########.fr        #
+#    Updated: 2023/09/06 15:55:18 by pmagalha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME = push_swap
 
 SRC = lists_aux.c main.c \
 vibe_check.c sorting.c radix.c simple_sort.c \
-index.c operations.c
+index.c operations.c free.c
 
 OBJ = $(SRC:.c=.o)
 

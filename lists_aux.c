@@ -6,7 +6,7 @@
 /*   By: pmagalha <pmagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 11:56:55 by pmagalha          #+#    #+#             */
-/*   Updated: 2023/09/06 10:36:00 by pmagalha         ###   ########.fr       */
+/*   Updated: 2023/09/06 16:35:32 by pmagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ t_stack_node	*insert_at_head(t_stack_node *head, int new_value)
 	new_node = malloc(sizeof(t_stack_node));
 	new_node->value = new_value;
 	if (head == NULL)
+	{
 		return (new_node);
+	}
 	else
 	{
 		new_node->next = head;
@@ -34,6 +36,7 @@ t_stack_node	*insert_at_tail(t_stack_node *head, int new_value)
 
 	new_node = malloc(sizeof(t_stack_node));
 	new_node->value = new_value;
+	new_node->next = NULL;
 	current = head;
 	if (head == NULL)
 		return (new_node);

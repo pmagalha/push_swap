@@ -6,56 +6,23 @@
 /*   By: pmagalha <pmagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 20:16:20 by pmagalha          #+#    #+#             */
-/*   Updated: 2023/09/06 11:13:01 by pmagalha         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:09:53 by pmagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack_node	*find_min(t_stack_node **a)
+void	sort3(t_stack_node **a)
 {
-	t_stack_node	*min;
-	t_stack_node	*current;
+	t_stack_node	*biggest;
 
-	if (*a == NULL)
-		return (NULL);
-	min = *a;
-	current = (*a)->next;
-	while (current != NULL)
-	{
-		if (current->value < min->value)
-			min = current;
-		current = current->next;
-	}
-	return (min);
-}
-
-void	sort3(t_stack_node **dup_pos)
-{
-	t_stack_node	*node;
-
-	node = *dup_pos;
-	if (node->next->next->value > node->next->value)
-	{
-		if (node->value < node->next->next->value)
-			*dup_pos = swap_a(*dup_pos);
-		else
-			*dup_pos = rotate_a(*dup_pos);
-	}
-	else
-	{
-		if (node->next->next->value < node->value)
-		{
-			if (node->value > node->next->value)
-				*dup_pos = swap_a(*dup_pos);
-			*dup_pos = rev_rot_a(*dup_pos);
-		}
-		else
-		{
-			*dup_pos = swap_a(*dup_pos);
-			*dup_pos = rotate_a(*dup_pos);
-		}
-	}
+	biggest = biggest_node(*a);
+	if (biggest == *a)
+		*a = rotate_a(*a);
+	else if (biggest == (*a)->next)
+		*a = rev_rot_a(*a);
+	if ((*a)->value > (*a)->next->value)
+		*a = swap_a(*a);
 }
 
 int	get_distance(t_stack_node **a, t_stack_node *min)

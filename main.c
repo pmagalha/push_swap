@@ -6,26 +6,11 @@
 /*   By: pmagalha <pmagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 09:47:30 by pmagalha          #+#    #+#             */
-/*   Updated: 2023/09/06 17:23:14 by pmagalha         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:11:48 by pmagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void    print_lists(t_stack_node *head)
-{
-    int i;
-    t_stack_node *current;
-    
-    i = 0;
-    current = head;
-    while (current != NULL)
-    {
-        printf("Node %d: %d\n", i, current->value);
-        i++;
-        current = current->next;
-    }
-}
 
 t_stack_node	*cpy_stack(t_stack_node *original)
 {
@@ -36,6 +21,7 @@ t_stack_node	*cpy_stack(t_stack_node *original)
 
 	copied_head = NULL;
 	copied_tail = NULL;
+	new_node = NULL;
 	while (original != NULL)
 	{
 		value = original->value;
@@ -51,7 +37,7 @@ t_stack_node	*cpy_stack(t_stack_node *original)
 			copied_tail = new_node;
 		}
 		original = original->next;
-	}printf_lists
+	}
 	return (copied_head);
 }
 
@@ -70,19 +56,22 @@ t_stack_node	*create_pos(t_stack_node *original)
 				find_index(original->value, sorted));
 		original = original->next;
 	}
+	free_stack2(sorted);
 	return (dup_positive);
 }
 
-void	init_stack(int argc, char **argv, t_stack_node **a)
+t_stack_node	*init_stack(int argc, char **argv)
 {
 	int				i;
 	char			**split;
+	t_stack_node	*stack;
 
+	stack = NULL;
 	i = 0;
 	if (argc < 2)
-		return ;
+		return (NULL);
 	if (check_args(argc, argv))
-		return ;
+		return (NULL);
 	if (argc == 2)
 		split = ft_split(argv[1], ' ');
 	else
@@ -92,11 +81,12 @@ void	init_stack(int argc, char **argv, t_stack_node **a)
 	}
 	while (split[i] != NULL)
 	{
-		*a = insert_at_tail(*a, atoi(split[i]));
+		stack = insert_at_tail(stack, ft_atol(split[i]));
 		i++;
 	}
 	if (argc == 2)
 		free_array(split);
+	return (stack);
 }
 
 int	main(int argc, char **argv)
@@ -105,18 +95,21 @@ int	main(int argc, char **argv)
 	t_stack_node	*b;
 	t_stack_node	*dup_pos;
 
-	a = NULL;
+	a = init_stack(argc, argv);
 	b = NULL;
-	init_stack(argc, argv, &a);
-	
-	print_lists(a);
-
 	assign_index(a);
+	dup_pos = NULL;
 	dup_pos = create_pos(a);
-	sort_functions(a, b, dup_pos);
-	if (a)
-		free_stack2(a);
-	print_lists(a);
-	if (b)
-		free_stack2(b);
+	if (!is_sorted(a))
+	{
+		if (list_lenght_iter(a) == 3)
+			sort3(&a);
+		if (list_lenght_iter(a) == 4)
+			sort4(&a, &b);
+		if (list_lenght_iter(a) == 5)
+			sort5(&a, &b);
+		else if (list_lenght_iter(a) > 5)
+			radix_sort(&dup_pos, &b);
+	}
+	free_all(a, b, dup_pos);
 }

@@ -6,7 +6,7 @@
 /*   By: pmagalha <pmagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 10:46:35 by pmagalha          #+#    #+#             */
-/*   Updated: 2023/09/06 10:58:53 by pmagalha         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:07:20 by pmagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,38 +42,41 @@ void	push_b(t_stack_node **a, t_stack_node **b)
 
 t_stack_node	*rotate_a(t_stack_node *a)
 {
-	int				value;
 	t_stack_node	*first;
+	t_stack_node	*current;
 
-	first = NULL;
-	value = a->value;
-	if (a != NULL || a->next != NULL)
+	first = a;
+	if (a != NULL && a->next != NULL)
 	{
-		first = insert_at_tail(a, value);
-		first = delete_head_node(a);
+		current = a;
+		while (current->next != NULL)
+			current = current->next;
+		current->next = a;
+		a = a->next;
+		current->next->next = NULL;
 	}
 	ft_printf("ra\n");
-	return (first);
+	return (a);
 }
 
 t_stack_node	*rev_rot_a(t_stack_node *a)
 {
-	int				last_value;
-	t_stack_node	*last;
-	t_stack_node	*new_head;
+	t_stack_node	*current;
+	t_stack_node	*prev;
 
+	current = a;
+	prev = NULL;
 	if (a == NULL || a->next == NULL)
 		return (a);
-	last = a;
-	while (last->next != NULL)
+	while (current->next != NULL)
 	{
-		last = last->next;
+		prev = current;
+		current = current->next;
 	}
-	last_value = last->value;
-	new_head = delete_tail_node(a);
-	new_head = insert_at_head(a, last_value);
+	prev->next = NULL;
+	current->next = a;
 	ft_printf("rra\n");
-	return (new_head);
+	return (current);
 }
 
 t_stack_node	*swap_a(t_stack_node *a)

@@ -6,7 +6,7 @@
 /*   By: pmagalha <pmagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 11:56:55 by pmagalha          #+#    #+#             */
-/*   Updated: 2023/09/06 16:35:32 by pmagalha         ###   ########.fr       */
+/*   Updated: 2023/09/13 11:13:57 by pmagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ t_stack_node	*insert_at_tail(t_stack_node *head, int new_value)
 	new_node->next = NULL;
 	current = head;
 	if (head == NULL)
+	{
 		return (new_node);
+	}
 	else
 	{
 		while (current->next != NULL)
@@ -97,8 +99,8 @@ int	list_lenght_iter(t_stack_node *head)
 	i = 0;
 	while (head != NULL)
 	{
-		i++;
 		head = head->next;
+		i++;
 	}
 	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: pmagalha <pmagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 10:54:44 by pmagalha          #+#    #+#             */
-/*   Updated: 2023/08/29 11:16:08 by pmagalha         ###   ########.fr       */
+/*   Updated: 2023/09/22 16:53:19 by pmagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 long	ft_atol(const char *nptr)
 {
-	int	sign;
-	int	res;
+	long	sign;
+	long	res;
 
 	sign = 1;
 	res = 0;
